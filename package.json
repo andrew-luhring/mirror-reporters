@@ -12,7 +12,12 @@
     "node-dev": "~2.1.6",
     "request": "~2.27.0",
     "sqlite3": "~2.2.0",
-    "underscore": "~1.5.2"
+    "underscore": "~1.5.2",
+    "grunt-contrib-jshint": "~0.9.2",
+    "grunt-shell": "~0.6.4",
+    "grunt-contrib-sass": "~0.7.3",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-styleguide": "~0.2.15"
   },
   "devDependencies": {
     "mocha": "~1.18.2",
@@ -21,7 +26,12 @@
     "jshint": "~2.4.4",
     "grunt": "~0.4.4",
     "grunt-mocha": "~0.4.10",
-    "karma": "~0.12.1"
+    "karma": "~0.12.1",
+    "karma-growl": "~0.1.0",
+    "karma-mocha-reporter": "~0.2.2",
+    "karma-unicorn-reporter": "~0.1.4",
+    "chai": "~1.9.1",
+    "karma-chai": "~0.1.0"
   },
   "scripts": {
     "test": "grunt test"

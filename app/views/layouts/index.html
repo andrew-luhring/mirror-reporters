@@ -1,10 +1,11 @@
 <!doctype html>
 <html>
     <head>
-	    <base href="/public/" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Glassware Reporters</title>
-        <link href="assets/css/style.css" rel="stylesheet" media="screen">
+        <title>Glassware Starter Project</title>
+        <!--<link href="/public/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="/public/vendor/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">-->
+        <link href="/public/assets/css/style.css" rel="stylesheet" media="screen">
         <meta name="csrf-token" content="{{csrfToken}}">
     </head>
     <body>
@@ -17,7 +18,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/">Home</a>
+                    <a class="navbar-brand" href="/">Mirror QuickStart - Node.js</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
@@ -29,6 +30,7 @@
                 </div><!--/.nav-collapse -->
             </div><!-- /.container -->
         </div><!-- /.navbar -->
+
         <div class="container">
 
             <div id="header-alert" class="alert alert-{{#if alert}}{{alert}}{{else}}info{{/if}} alert-dismissable {{#unless message}} hidden {{/unless}}">
@@ -95,6 +97,6 @@
         </div><!--/.container-->
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script src="/public/vendor/bootstrap/js/bootstrap.min.js"></script>
     </body>
 </html>

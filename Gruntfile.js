@@ -1,23 +1,23 @@
 module.exports = function(grunt) {
 	"use strict";
-	var   ASSETS_DIR =  "public/"
+	var   ASSETS_DIR =  "public/assets/"
 		,   STYLE_DIR =  ASSETS_DIR + "css/"
 		,   SCSS_DIR = ASSETS_DIR + "scss/"
 		,   STYLEGUIDE_DIR = ASSETS_DIR + "styleguide/"
 		,   JS_DIR = ASSETS_DIR + 'js/'
 		,   TEST_DIR =  'tests/'
+		,   CONFIG_DIR   = 'config/'
 		,   LIB_DIR = ASSETS_DIR + 'lib/'
-		,   BUNDLE_DIR = ASSETS_DIR + 'min/'
-		,   VIEWS_DIR = './'
+		,   VIEWS_DIR = 'app/views/'
 		,   LAYOUTS_DIR = VIEWS_DIR + 'layouts/'
 		,   HBS_PARTIALS_DIR = VIEWS_DIR + 'partials/' ;
 
 	var  cssF = STYLE_DIR  + "style.css"
 		,   scssF = SCSS_DIR + "style.scss"
-		,   styleguideF = LAYOUTS_DIR + 'styleguide.hbs'
+		,   styleguideF = LAYOUTS_DIR + 'styleguide.html';
 
 
-	var simplebuild = require("./extensions/simplebuild-ext-gruntify.js")(grunt);
+
 	var config = 	{
 		pkg: grunt.file.readJSON('package.json')
 		,   sass: {
@@ -31,7 +31,19 @@ module.exports = function(grunt) {
 					options: {
 						stdout: true
 					},
+					command: 'node-dev app.js'
+				}
+			,   test: {
+					options: {
+						stdout: true
+					},
 					command: 'grunt karma:unit:start watch'
+				}
+			,   dev: {
+					options: {
+						stdout: true
+					},
+					command: 'node-dev app.js & grunt karma:unit:start watch'
 				}
 			}
 		,   jsdoc : {
@@ -53,7 +65,7 @@ module.exports = function(grunt) {
 			}
 		,   karma: {
 				unit: {
-					configFile: './config/karma.conf.js'
+					configFile: CONFIG_DIR + 'karma.conf.js'
 				,   background: true
 				}
 			}
@@ -87,10 +99,6 @@ module.exports = function(grunt) {
 					}
 				}
 			}
-		,   Mocha: {
-				files: [ TEST_DIR + "*.js", '!**/node_modules/**']
-			,   exclude: ["node_modules/*", "./node_modules/"]
-			}
 		,   watch:{
 					lint : {
 						files : [
@@ -107,15 +115,6 @@ module.exports = function(grunt) {
 						]
 						,   tasks: ['karma:unit:run:start watch'] //NOTE the :run flag
 					}
-//				,   test : {
-//						files: [
-//							TEST_DIR + "*.js"
-//							,   JS_DIR + "*.js"
-//						]
-//					,   tasks: [
-//							'karma'
-//						]
-//					}
 				,   guide : {
 						files: ['./README.md']
 					,   tasks: ['styleguide:docco']
@@ -129,10 +128,9 @@ module.exports = function(grunt) {
 							  JS_DIR + "*.js"
 							, ASSETS_DIR + 'main.js'
 							, STYLE_DIR + "*.css"
-							, VIEWS_DIR + "**/*.hbs"
-							, TEST_DIR + "_portfolio.js"
-							, TEST_DIR + "_tests.js"
-							, '!**/node_modules/**'
+							, VIEWS_DIR + "**/*.html"
+							, TEST_DIR + "_*.js"
+							, TEST_DIR + "main-test.js"
 						]
 					,	options: {
 							livereload: true
@@ -148,15 +146,15 @@ module.exports = function(grunt) {
 
 	grunt.initConfig( config );
 
-
-	simplebuild.loadNpmTasks("../config/simplebuild-mocha.js");
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-karma');
 	grunt.loadNpmTasks('grunt-shell');
 	grunt.loadNpmTasks('grunt-styleguide');
-	grunt.registerTask("default", 'That income tax swag', ['sass:dist', 'styleguide:docco']);
+	grunt.registerTask("default", 'starts server', ['shell:start']);
+	grunt.registerTask("test", 'starts karma', ['shell:test']);
+	grunt.registerTask("dev", 'starts server AND karma', ['shell:dev']);
 };
 function lintOptions() {
 	"use strict";
