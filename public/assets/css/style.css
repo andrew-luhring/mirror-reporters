@@ -9107,24 +9107,24 @@ td.visible-print {
 }
 
 /* Add some padding to shift the body down underneath the navbar. */
-/* line 6, ../scss/style.scss */
+/* line 10, ../scss/style.scss */
 body {
   padding-top: 60px;
 }
 
 @media (max-width: 980px) {
-  /* line 11, ../scss/style.scss */
+  /* line 15, ../scss/style.scss */
   body {
     padding-top: 0;
   }
 }
 /* Get rid of margin under form controls that are in table cells. */
-/* line 17, ../scss/style.scss */
+/* line 21, ../scss/style.scss */
 table td form, table td input[type='text'], table td button {
   margin-bottom: 0;
 }
 
-/* line 21, ../scss/style.scss */
+/* line 25, ../scss/style.scss */
 img.button-icon {
   width: 60px;
 }

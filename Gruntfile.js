@@ -84,7 +84,7 @@ module.exports = function(grunt) {
 					,   name: 'doccoV'
 					}
 				,   files: {
-						'./assets/styleguide/styledocco' : 'assets/scss/*.scss'
+						//'./assets/styleguide/styledocco' : 'assets/scss/*.scss'
 					}
 				}
 			,   kss: {
@@ -95,7 +95,7 @@ module.exports = function(grunt) {
 					,   name: 'kssV'
 					}
 					,   files: {
-						'./assets/styleguide/kss' : 'assets/scss/*.scss'
+						//'./assets/styleguide/kss' : 'assets/scss/*.scss'
 					}
 				}
 			}
