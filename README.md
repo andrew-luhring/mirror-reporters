@@ -68,7 +68,9 @@ This project is closely based off of my contributions to / implementation of Ale
 
 
 *  Then fire up your browser and go to [http://localhost:[ port number ] ](http://localhost:4567)
-*  If everything goes correctly, you should something like:
+*  If everything goes correctly, you should see something like this at your localhost:port:
+
+![](https://raw.githubusercontent.com/andrew-luhring/mirror-reporters/master/public/assets/images/screenshot.png)
 
 
 ## Test
@@ -77,7 +79,7 @@ If you don't happen to have a Glass, you probably won't be able to run this-- bu
 
     npm test
 
-![](https://raw.githubusercontent.com/andrew-luhring/mirror-reporters/master/public/assets/images/screenshot.png)
+
 
 ## Contribute
 
