@@ -16,7 +16,7 @@ module.exports = function(grunt) {
 		,   scssF = SCSS_DIR + "style.scss"
 		,   styleguideF = LAYOUTS_DIR + 'styleguide.html';
 
-
+	var simplebuild = require("./extensions/simplebuild-ext-gruntify.js")(grunt);
 
 	var config = 	{
 		pkg: grunt.file.readJSON('package.json')
@@ -99,38 +99,35 @@ module.exports = function(grunt) {
 					}
 				}
 			}
+		,  Mocha : {
+				files : [TEST_DIR + "*.js", 'lib/reporters/glass-mocha.js', '!' + TEST_DIR + 'tests.tests.js']
+
+
+		}
 		,   watch:{
 					lint : {
 						files : [
-							JS_DIR + "*.js"
-						,   ASSETS_DIR + 'main.js'
+						//	JS_DIR + "*.js"
+						//,   ASSETS_DIR + 'main.js'
+						'lib/reporters/glass-mocha.js'
 						,	TEST_DIR + "*.js"
 						]
 					,   tasks: [ 'jshint' ]
 					}
-				,   karma: {
-							files : [
-							TEST_DIR + "*.js"
-							,   JS_DIR + "*.js"
+				,   test: {
+						files: [
+							'lib/reporters/glass-mocha.js'
+						,	TEST_DIR + "*.js"
 						]
-						,   tasks: ['karma:unit:run:start watch'] //NOTE the :run flag
+					,   tasks: ['Mocha']
 					}
-				,   guide : {
-						files: ['./README.md']
-					,   tasks: ['styleguide:docco']
-					}
-				,   style : {
-						tasks: ['sass:dist', 'styleguide:docco']
-					,	files: [SCSS_DIR + "**/*.scss", SCSS_DIR + "**/**/.scss"]
-					}
+//				,   karma: { files : [ TEST_DIR + "*.js",   JS_DIR + "*.js"]	,   tasks: ['karma:unit:run:start watch'] //NOTE the :run flag }
+//	    		,   guide : { files: ['./README.md'] ,   tasks: ['styleguide:docco'] }*/
+//				,   style : {tasks: ['sass:dist', 'styleguide:docco']					,	files: [SCSS_DIR + "**/*.scss", SCSS_DIR + "**/**/.scss"] }
 				,   livereload: {
 						files : [
-							  JS_DIR + "*.js"
-							, ASSETS_DIR + 'main.js'
-							, STYLE_DIR + "*.css"
-							, VIEWS_DIR + "**/*.html"
-							, TEST_DIR + "_*.js"
-							, TEST_DIR + "main-test.js"
+//							  JS_DIR + "*.js" , ASSETS_DIR + 'main.js' , STYLE_DIR + "*.css" , VIEWS_DIR + "**/*.html" , TEST_DIR + "main-test.js"
+							'lib/reporters/glass-mocha.js' ,	TEST_DIR + "*.js"
 						]
 					,	options: {
 							livereload: true
@@ -145,6 +142,7 @@ module.exports = function(grunt) {
 	config["styleguide"]["kss"]["files"][STYLEGUIDE_DIR] = SCSS_DIR +'*.scss' ;
 
 	grunt.initConfig( config );
+	simplebuild.loadNpmTasks("../config/simplebuild-mocha.js");
 
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
