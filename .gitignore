@@ -1,0 +1,17 @@
+node_modules
+*swp
+*.log
+.DS_Store
+*.db
+tags
+sandbox
+*config/client.json
+config/client.json
+client.json
+*config/client_secrets.json
+config/client_secrets.json
+client_secrets.json
+**client.json
+*_ignore_*
+*~
+*.idea

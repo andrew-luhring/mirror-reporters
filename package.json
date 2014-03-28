@@ -1,0 +1,69 @@
+{
+  "name": "mirror-reporters",
+  "version": "0.0.1",
+  "description": "Google Glass + [Mocha, karma, jshint].reporter :-)",
+  "main": "controller.js",
+  "dependencies": {
+    "async": "~0.2.10",
+    "bcrypt": "~0.7.7",
+    "express": "~3.4.8",
+    "hbs": "~2.4.0",
+    "mirror-api-client": "~0.3.6",
+    "node-dev": "~2.1.6",
+    "request": "~2.27.0",
+    "sqlite3": "~2.2.0",
+    "underscore": "~1.5.2"
+  },
+  "devDependencies": {
+    "mocha": "~1.18.2",
+    "karma-mocha": "~0.1.3",
+    "grunt-karma": "~0.8.2",
+    "jshint": "~2.4.4",
+    "grunt": "~0.4.4",
+    "grunt-mocha": "~0.4.10",
+    "karma": "~0.12.1"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/andrew-luhring/mirror-reporters.git"
+  },
+  "keywords": [
+    "mirror",
+    "mirrorapi",
+    "google",
+    "glass",
+    "mirror",
+    "api",
+    "google",
+    "glass",
+    "glass",
+    "google-glass",
+    "reporter",
+    "google",
+    "glass",
+    "reporter",
+    "mocha",
+    "karma",
+    "jshint",
+    "mocha-glass",
+    "karma-glass",
+    "jshint-glass",
+    "mocha-mirror",
+    "karma-mirror",
+    "jshint-mirror"
+  ],
+  "author": {
+    "name": "Andrew Luhring",
+    "email": "andrew.luhring@gmail.com",
+    "website": "http://www.androo.pro"
+  },
+  "contributors": [],
+  "license": "MIT License",
+  "bugs": {
+    "url": "https://github.com/andrew-luhring/mirror-reporters/issues"
+  },
+  "homepage": "https://github.com/andrew-luhring/mirror-reporters"
+}

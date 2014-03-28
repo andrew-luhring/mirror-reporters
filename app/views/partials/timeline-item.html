@@ -1,0 +1,32 @@
+<h3>{{this.text}}</h3>
+<table class="table table-bordered">
+    <tbody>
+        <tr>
+            <th>ID</th><td>{{this.id}}</td>
+        </tr>
+        <tr>
+            <th>HTML</th><td>{{this.html}}</td>
+        </tr>
+        <tr>
+            <th>Attachments</th>
+            <td>
+                {{#if this.attachments}}
+                    {{#each this.attachments}}
+                        <img src="/attachment-proxy?timelineItemId={{this.id}}&attachmentId={{this.id}}">
+                    {{/each}}
+                {{else}}
+                    <div class="muted">None</div>
+                {{/if}}
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <form id="delete-item-form" class="form-inline" method="post" action="/timeline/delete">
+                    <input type='hidden' name="_csrf" value="{{csrfToken}}">
+                    <input type="hidden" name="id" value="{{this.id}}">
+                    <button class="btn btn-block btn-danger" type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+    </tbody>
+</table>
