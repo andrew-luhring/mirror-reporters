@@ -51,7 +51,7 @@ This project is closely based off of  Alexander Scott's [mirror-quickstart-nodej
 *  Then fire up your browser and go to [http://localhost:[ port number ] ](http://localhost:4567)
 *  If everything goes correctly, you should something like:
 
-![](https://github.com/andrew-luhring/mirror-reporters/tree/master/public/assets/images/screenshot.png)
+![](https://raw.githubusercontent.com/andrew-luhring/mirror-reporters/master/public/assets/images/screenshot.png)
 
 ## Contribute
 
