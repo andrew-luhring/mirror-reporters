@@ -25,10 +25,34 @@ module.exports = function(app) {
         } else next(); 
     }
 
-    function renderIndex(req, res, next){ res.render('index'); }
+    function renderIndex(req, res, next){ res.render('layouts/index'); }
+    function renderMocha(req, res, next){
+	    res.render('layouts/mocha', function(err, html){
+		    console.log(html);
+		    res.send(html);
+	    });
+    }
+    function renderStyleguide(req, res, next){
+	    res.render('layouts/styleguide');
+	    console.log(res.render('layouts/styleguide'));
+	    //console.log(req);
+	    //console.log(res);
+    }
     function redirectIndex(req, res, next){ res.redirect('/'); }
 
-    app.get('/', checkAuth, timelineController.listTimelineItems, renderIndex);
+	app.get('/mocha',
+			renderMocha
+			//timelineController.listTimelineItems,
+			);
+	app.get('/styleguide',
+			timelineController.listTimelineItems,
+			renderStyleguide);
+
+
+    app.get('/',
+		    checkAuth,
+		    timelineController.listTimelineItems,
+		    renderIndex);
     app.get('/timeline', checkAuth, timelineController.listTimelineItems, renderIndex);
     app.get('/timeline/items/:id', checkAuth, timelineController.listTimelineItems, timelineController.getTimelineItem, renderIndex);
     app.post('/timeline/insert', checkAuth, timelineController.insertTimelineItem);
