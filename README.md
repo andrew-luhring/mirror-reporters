@@ -17,7 +17,7 @@ That being said-
 
 I'd love some help :-).
 
-This project is closely based off of  Alexander Scott's [mirror-quickstart-nodejs](https://github.com/alexanderscott/mirror-quickstart-nodejs)
+This project is closely based off of my contributions to / implementation of Alexander Scott's [mirror-quickstart-nodejs](https://github.com/alexanderscott/mirror-quickstart-nodejs)
  ...which is largely based off of Google's [mirror-quickstart-ruby](https://developers.google.com/glass/quickstart/ruby).
 
 
@@ -50,6 +50,13 @@ This project is closely based off of  Alexander Scott's [mirror-quickstart-nodej
 
 *  Then fire up your browser and go to [http://localhost:[ port number ] ](http://localhost:4567)
 *  If everything goes correctly, you should something like:
+
+
+## Test
+
+If you don't happen to have a Glass, you probably won't be able to run this-- but you CAN run the tests:
+
+    npm test
 
 ![](https://raw.githubusercontent.com/andrew-luhring/mirror-reporters/master/public/assets/images/screenshot.png)
 
