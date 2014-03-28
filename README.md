@@ -9,7 +9,7 @@ Before you get too excited:
 
 **There is currently nothing to show**
 
-Nothing works.
+The mirror api is the only thing that works.
 
 The reporters have not been formed into existence yet- when they exist and work properly, this README will be updated (and the reporters will be submitted to their respective parent applications).
 
@@ -39,11 +39,19 @@ This project is closely based off of  Alexander Scott's [mirror-quickstart-nodej
 *  Download your JSON file, put it in this projects' config directory
   *  **If it is not named "client.json" name it "client.json"**
 
+*  In /app.js make sure PORT matches the redirect_uris / javascript_origins ports that are in your client.json.
+  *  The default port for this project is 4567.
+
 
 ## Run
 
     npm start
 
+
+*  Then fire up your browser and go to [http://localhost:[ port number ] ](http://localhost:4567)
+*  If everything goes correctly, you should something like:
+
+![](https://github.com/andrew-luhring/mirror-reporters/tree/master/public/assets/images/screenshot.png)
 
 ## Contribute
 
