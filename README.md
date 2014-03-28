@@ -7,11 +7,30 @@ Google Glass + [Mocha, karma, jshint].reporter
 
 Before you get too excited:
 
-**There is currently nothing to show**
+*There is currently* ~~nothing~~ *not much to show*
 
-The mirror api is the only thing that works.
+**The mirror api and some basic mocha tests are the only things that work.**
 
-The reporters have not been formed into existence yet- when they exist and work properly, this README will be updated (and the reporters will be submitted to their respective parent applications).
+~~The mirror api is the only thing that works.~~
+
+
+
+
+### Current status:
+
+#### GlassMocha
+
+    testing
+
+#### GlassJSHint
+
+    not even started
+    
+#### GlassKarma
+
+    barely even thought about.
+
+The reporters have not been formed into complete existence yet- when they exist and work properly, this README will be updated (and the reporters will be submitted to their respective parent applications).
 
 That being said-
 
