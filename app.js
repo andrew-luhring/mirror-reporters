@@ -9,8 +9,7 @@ var express = require ('express'),
 		hbs = require ('hbs'),
 		app = express (),
 		server,
-		PORT ; // = port that's in your client.json file default is 4567
-
+    str;
 
 
 // sets up mirror api
@@ -25,42 +24,42 @@ app.locals.mirrorClient = require ('mirror-api-client') ({
 app.enable ('trust proxy');
 
 // View templating & rendering through handlebars.js
-app.set ('view engine', 'html');
-app.set ('views', __dirname + '/app/views');
+app.set ('view engine', 'html').
+    set ('views', __dirname + '/app/views');
+
 app.engine ('html', hbs.__express);
 hbs.registerPartials (__dirname + '/app/views/partials');
 
 
 // Compression (gzip), body parsing, URL encoding
-app.use (express.compress ());
-app.use (express.methodOverride ());
-app.use (express.urlencoded ());            // Needed to parse POST data sent as JSON payload
-app.use (express.json ());
+app.use (express.compress ()).
+    use (express.methodOverride ()).
+    use (express.urlencoded ()).
+    use (express.json ()).
 
 // Session setup
-//app.use (express.cookieParser (config.cookieSecret));                 // populates req.signedCookies
-app.use (express.cookieParser (config.session_secret || 'mirror-glass-secret'));                  // populates req.signedCookies
-app.use (express.session ());                   // populates req.session, needed for CSRF
+    use (express.cookieParser (config.session_secret || 'mirror-glass-secret')).
+    use (express.session ()).
 
 // CSRF for XSS protection - populates req.csrfToken()
-app.use (express.csrf ());
+    use (express.csrf ());
 
 // Logging config
 app.configure ('local', function () {
 	app.use (express.errorHandler ({ dumpExceptions: true, showStack: true }));
-});
-app.configure ('development', function () {
+}).
+    configure ('development', function () {
 	app.use (express.errorHandler ({ dumpExceptions: true, showStack: true }));
-});
-app.configure ('production', function () {
+}).
+    configure ('production', function () {
 	app.use (express.errorHandler ());
 });
 
 
 // Pre-route handling
 app.use (function (req, res, next) {
-	res.locals.message = req.session.message;
-	res.locals.csrfToken = req.csrfToken ();
+	res.locals.message    = req.session.message;
+	res.locals.csrfToken  = req.csrfToken ();
 	//console.log('pre-route call, res.locals.message = ' + res.locals.message);
 	next ();
 });
@@ -72,28 +71,21 @@ require ('./app/routes') (app);
 // Error handling
 app.use (function (err, req, res, next) {
 	console.log ('Error handler called with error:', err);
-	if (!req.session.userId) return res.redirect (req.app.locals.mirrorClient.getAuthUrl ());
+	if (!req.session.userId) {
+    return res.redirect (req.app.locals.mirrorClient.getAuthUrl ());}
 	res.locals.message = err || res.locals.message;
 	res.locals.alert = (err ? 'danger' : 'success');
 	return res.render ('index');
-});
+}).
 
 // Public static assets served from /public directory
-app.use ("/public", express.static (__dirname + '/public'));
-
-// Run the server
-if(PORT){
-	console.log("yay " + PORT);
-}
-server = http.createServer (app).listen ( PORT || config.port);
-console.log (server.address ());
-console.log ((new Date ()).toString () + ":: glasstasks server listening on port::", /*server.address().port ,*/ ", environment:: ", app.settings.env);
+    use ("/public", express.static (__dirname + '/public'));
 
 
-//function start(){
-//server = http.createServer(app).listen( process.env.PORT || config.port);
-//logger.info((new Date()).toString()+ ":: glasstasks server listening on port::", server.address().port, ", environment:: ", app.settings.env);
-//}
+server = http.createServer(app).listen( config.port);
 
-//exports.start = start;
-//exports.app = app;
+str = "" + new Date ().toString () +
+        "\n:: glasstasks server listening on port   :: " + server.address().port +
+        "\n:: environment                           :: " + app.settings.env + "\n"
+
+console.log(str);

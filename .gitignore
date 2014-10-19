@@ -17,3 +17,4 @@ client_secrets.json
 *.idea
 **.sass-cache/
 .sass-cache/
+public/assets/bower_components/
